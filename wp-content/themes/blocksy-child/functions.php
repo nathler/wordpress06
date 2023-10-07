@@ -22,3 +22,31 @@ endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 // END ENQUEUE PARENT ACTION
+
+
+
+function ajout_lien_admin($items, $args) {
+    if( is_user_logged_in() && $args->theme_location == 'menu-1' ){
+        $items .= '<li><a href="'. get_admin_url() .'">Nath</a></li>';
+    }
+  return $items;
+}
+
+add_filter('wp_nav_menu_items', 'ajout_lien_admin', 10, 2);
+
+
+/*add_filter( 'wp_nav_menu_items','add_admin_link', 10, 2 );
+
+function add_admin_link( $items, $args ) {
+
+    if (is_user_logged_in() && $args->theme_location == 'menu-1') {
+
+        $items .= '<li><a href="'. get_admin_url() .'">Admin</a></li>';
+
+    }
+
+    return $items;
+
+}
+
+?>
