@@ -26,9 +26,12 @@ add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 
 function ajout_lien_admin($items, $args) {
-    if( is_user_logged_in() && $args->theme_location == 'menu-1' ){
-        $items .= '<li><a href="'. get_admin_url() .'">Nath</a></li>';
+    if( is_user_logged_in() && $args->PLANTY_02 == 'menu_1' ){
+        $items .= '<li><a href="'. get_admin_url() .'">Nath_planty_02</a></li>';
     }
+    /*else{
+        ($args->PLANTY_02 == 'menu_2' )
+    }*/
   return $items;
 }
 
